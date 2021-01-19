@@ -16,14 +16,18 @@ function Scene() {
     renderer.setSize(window.innerWidth, window.innerHeight)
 
     // add objects to scene
-    const manualCube = makeCubeManual();
-    const autoCube = makeCube();
+    // const cube = makeCubeManual();
+    const cube = makeCube();
 
-    scene.add( manualCube );
-    // scene.add( autoCube );
+    scene.add(cube);
 
     // main loop 
-    const animate = () => {
+    const animate = (deltaTime) => {
+
+      deltaTime *= 0.001; // ms to seconds
+      cube.rotation.x = deltaTime;
+      cube.rotation.y = deltaTime;
+      
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
