@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { makeCube, makeCubeManual } from './geometry';
+import RaycastHandler from './RaycastHandler';
 
 function Scene() {
 
@@ -18,16 +19,29 @@ function Scene() {
     // add objects to scene
     // const cube = makeCubeManual();
     const cube = makeCube();
-
     scene.add(cube);
 
+    // setup raycasting
+    const raycastHandler = new RaycastHandler()
+
     // main loop 
+    let highlightedObject = null;
     const animate = (deltaTime) => {
 
       deltaTime *= 0.001; // ms to seconds
       cube.rotation.x = deltaTime;
       cube.rotation.y = deltaTime;
       
+      // update the raycaster position 
+      raycastHandler.updatePosition(camera);
+      
+      // detect collisions
+      const intersects = raycastHandler.getIntersections(scene.children);
+      if (intersects.length) {
+        intersects[0].object.material.color.set(0x0000ff);
+      }
+
+      // next frame
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
