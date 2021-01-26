@@ -2,7 +2,8 @@ import * as THREE from 'three';
 
 export const makeCube = () => {
   const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshBasicMaterial( { color: '#ff0000' } );
+  // randomise cube colour
+  const material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } );
   const cube = new THREE.Mesh(geometry, material);
 
   return cube;
