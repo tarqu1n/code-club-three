@@ -26,10 +26,18 @@ function Scene() {
 
     // main loop 
     let highlightedObject = null;
+
+    let theta = 0; // used for camera rotation
+    const radius = 25; // camera distance
     const animate = (deltaTime) => {
 
       deltaTime *= 0.001; // ms to seconds
       
+      theta += 0.7;
+      camera.position.x = radius * Math.sin(THREE.MathUtils.degToRad(theta));
+      camera.position.z = radius * Math.cos(THREE.MathUtils.degToRad(theta));
+      camera.lookAt(scene.position);
+
       // update the raycaster position 
       raycastHandler.updatePosition(camera);
       
