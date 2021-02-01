@@ -22,7 +22,6 @@ All faces must also have a **normal**, a vector perpendicular to the plane on wh
 
 Raycasting is the process of creating a line in 3d space and checking if the any of the coordinates along that line intersect any objects within that space. This is used to interact with objects within the scene.
 
-
 ## TODO
 - Non basic materials and lighting
 - Movement and animation
@@ -34,7 +33,6 @@ Raycasting is the process of creating a line in 3d space and checking if the any
 4. Show use of position, scale and rotation with cubes through implementation of a cube factory.
 5. Show raycasting and how elaborate on how it can be used interact with 3d space from 2d space
 6. Show basic orbiting camera through use of pythagoras
-
 
 Challenge for next code club is to take a fork of the repo and use Scene2 to make model of the solar system viewed from the top down. 
 Tip: Scene objects can be attached as children to other objects, any transformation made to a parent will also effect a child. https://threejs.org/docs/#api/en/core/Object3D.add
